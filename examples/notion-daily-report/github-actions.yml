@@ -1,0 +1,42 @@
+# notion-daily-report 定期実行ワークフロー
+# 配置先: .github/workflows/notion-daily-report.yml
+# 必要な設定:
+#   Secrets:   ANTHROPIC_API_KEY / DRM_AGENT_MCP_KEY / NOTION_TOKEN
+#   Variables: DISCORD_CHANNEL_ID
+#   リポジトリ直下に examples/notion-daily-report/mcp.json をコピーした mcp.json を置くこと
+name: Notion Daily Report
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # 毎日 9:00 JST（UTC 0:00）
+  workflow_dispatch: {}
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      DRM_AGENT_MCP_KEY: ${{ secrets.DRM_AGENT_MCP_KEY }}
+      NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+      DISCORD_CHANNEL_ID: ${{ vars.DISCORD_CHANNEL_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Install skill
+        run: npx -y skills add line-ec-lea/drm-agent-skills -s notion-daily-report -a claude-code -y
+
+      - name: Run report
+        run: |
+          claude -p "notion-daily-report スキルを定期実行モードで実行して。昨日（JST）の成果報告レポートを Notion に upsert し、Discord チャネル ID ${DISCORD_CHANNEL_ID} に通知まで完了させること。確認は不要。失敗した場合はエラー内容を同じチャネルに通知すること。" \
+            --mcp-config mcp.json \
+            --allowedTools "mcp__drm-agent__*,mcp__notion__*,Read" \
+            --output-format json \
+            --max-turns 50

@@ -11,7 +11,7 @@ DRM AGENT MCP と [Notion 公式 MCP](https://developers.notion.com/docs/mcp)（
 
 ## ユースケース 1: 成果報告デイリーレポート
 
-> 実装済みサンプル: [`skills/notion-daily-report`](../skills/notion-daily-report/)
+> 実装済みサンプル: [`skills/notion-daily-report`](../skills/notion-daily-report/) ／ コピペ導入手順・定期実行ファイル一式: [notion-daily-report クイックスタート](notion-daily-report/)
 
 - **課題**: メンバー・受講生の成果報告が複数チャネルに散在し、拾い漏れる。称賛やフォローが遅れる
 - **MCP 活用**: 前日（JST）の全チャネルの会話から成果報告を抽出 → Notion データベースに日次ページとして蓄積 → Discord にサマリーと Notion リンクを通知

@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "drm-agent": {
+      "type": "http",
+      "url": "https://app.drm-agent.ai/api/mcp",
+      "headers": {
+        "Authorization": "Bearer ${DRM_AGENT_MCP_KEY}"
+      }
+    },
+    "notion": {
+      "command": "npx",
+      "args": ["-y", "@notionhq/notion-mcp-server"],
+      "env": {
+        "NOTION_TOKEN": "${NOTION_TOKEN}"
+      }
+    }
+  }
+}

@@ -214,6 +214,8 @@ DRM AGENT のチャネル一覧を見せて     ← MCP 接続の確認
 
 Notion MCP を併せて接続すると、会話データの分析結果を Notion データベースに蓄積し、Notion AI で横断検索・Q&A する運用が組めます（成果報告レポート・商談議事録・顧客カルテ・FAQ 自動構築など）。参考事例集は [examples/notion-usecases.md](examples/notion-usecases.md)、実装サンプルは [`notion-daily-report`](skills/notion-daily-report/) を参照してください。
 
+**コピペで動かす**: [notion-daily-report クイックスタート](examples/notion-daily-report/) に、MCP 接続コマンド → インストール → 初回実行（Notion DB 自動作成）→ 毎朝の定期実行（cron / GitHub Actions のコピペファイル付き）までの手順をまとめています。
+
 ### 毎日自動で実行したい
 
 「毎朝9時に未返信チェックを LINE に送る」のような無人実行は、Claude Code の headless モード + cron / launchd / GitHub Actions で組めます。設計パターン（送信先の固定・二重実行の防止・失敗時の通知）を [`skills/drm-agent-extension-dev/references/scheduled-execution.md`](skills/drm-agent-extension-dev/references/scheduled-execution.md) にまとめています。

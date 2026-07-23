@@ -28,6 +28,7 @@ ABC商事のカンペ作って            → 過去のやりとりから商談�
 | [`meeting-summary`](skills/meeting-summary/) | チャネルの会話を分析し、決定事項・未解決事項・ネクストアクションを LINE に配信 | 「田中さんとの商談サマリー出して」 |
 | [`unreplied`](skills/unreplied/) | 未返信・対応漏れメッセージを検知して LINE に通知 | 「未返信チェックして」 |
 | [`digest`](skills/digest/) | 複数チャネル横断の日次 / 週次ダイジェストを LINE に配信 | 「今日のダイジェストまとめて」 |
+| [`notion-daily-report`](skills/notion-daily-report/) | 昨日の会話から成果報告を抽出し Notion に蓄積、Discord に通知（要 Notion MCP） | 「成果報告レポート作って」 |
 | [`drm-agent-extension-dev`](skills/drm-agent-extension-dev/) | 上記のようなスキルを**自分で開発する**ための開発ガイド | 「拡張スキルを作りたい」 |
 
 ## 仕組み
@@ -208,6 +209,10 @@ DRM AGENT のチャネル一覧を見せて     ← MCP 接続の確認
 - **データはあなたの組織のみ** — API キーは組織単位で発行され、アクセス範囲はその組織のデータに限定されます
 
 ## 応用: 定期実行・スキル自作
+
+### Notion MCP / Notion AI と組み合わせたい
+
+Notion MCP を併せて接続すると、会話データの分析結果を Notion データベースに蓄積し、Notion AI で横断検索・Q&A する運用が組めます（成果報告レポート・商談議事録・顧客カルテ・FAQ 自動構築など）。参考事例集は [examples/notion-usecases.md](examples/notion-usecases.md)、実装サンプルは [`notion-daily-report`](skills/notion-daily-report/) を参照してください。
 
 ### 毎日自動で実行したい
 

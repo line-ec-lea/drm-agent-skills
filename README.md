@@ -31,6 +31,8 @@ ABC商事のカンペ作って            → 過去のやりとりから商談�
 | [`notion-daily-report`](skills/notion-daily-report/) | 昨日の会話から成果報告を抽出し Notion に蓄積、Discord に通知（要 Notion MCP） | 「成果報告レポート作って」 |
 | [`drm-agent-extension-dev`](skills/drm-agent-extension-dev/) | 上記のようなスキルを**自分で開発する**ための開発ガイド | 「拡張スキルを作りたい」 |
 
+> 📊 **図解で見たい方へ**: 各スキルの「解決したい課題 → 解決フロー → 解決プロンプト」を図解した [スキルフロー集](examples/skill-flows.md) と [Notion 連携ユースケース集](examples/notion-usecases.md) を用意しています。
+
 ## 仕組み
 
 スキル = AI エージェントへの「手順書」（SKILL.md）です。エージェントは DRM AGENT の MCP サーバー経由であなたの組織の会話データにアクセスし、スキルの手順に沿って分析・配信します。

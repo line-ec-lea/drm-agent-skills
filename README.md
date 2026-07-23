@@ -52,9 +52,28 @@ claude mcp add drm-agent \
 
 詳細は [公式ドキュメント](https://docs.drm-agent.ai/integrations/mcp-setup) を参照してください。
 
-### 3. スキルをワークスペースに配置
+### 3. スキルをインストール
 
-このリポジトリの `skills/` から使いたいスキルを、自分のワークスペースへコピーします。
+[skills CLI](https://github.com/vercel-labs/skills) でワンコマンドでインストールできます（プロジェクトのルートで実行）。
+
+```bash
+# 対話式でスキルとエージェントを選択
+npx skills add line-ec-lea/drm-agent-skills
+
+# 特定スキルのみ（例: kanpe）
+npx skills add line-ec-lea/drm-agent-skills -s kanpe -y
+
+# 全スキルを全エージェントに一括
+npx skills add line-ec-lea/drm-agent-skills --all
+
+# プロジェクト単位でなくグローバル（ユーザーレベル）に入れる場合
+npx skills add line-ec-lea/drm-agent-skills -g
+```
+
+CLI が実体を `.agents/skills/<name>/`（Cursor / Codex が読む共通配置）に置き、Claude Code 用に `.claude/skills/<name>` のシンボリックリンクを自動作成します。アップデートは `npx skills update` です。
+
+<details>
+<summary>手動で配置する場合</summary>
 
 ```bash
 git clone https://github.com/line-ec-lea/drm-agent-skills.git
@@ -70,7 +89,9 @@ cp -R drm-agent-skills/skills/kanpe .agents/skills/
 | Codex | `.agents/skills/`（プロジェクト）または `~/.agents/skills/`（グローバル） |
 | Cursor | `.agents/skills/` / `.cursor/skills/`（`.claude/skills/` も互換で読み込み） |
 
-> `.agents/skills/` は Codex と Cursor が共通で読むため、1 か所で済ませたい場合は `.agents/skills/` に置き、Claude Code 用に `.claude/skills/<name>` からシンボリックリンクを張る構成を推奨します。
+`.agents/skills/` は Codex と Cursor が共通で読むため、1 か所で済ませたい場合は `.agents/skills/` に置き、Claude Code 用に `.claude/skills/<name>` からシンボリックリンクを張る構成を推奨します。
+
+</details>
 
 ### 4. 使ってみる
 

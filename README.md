@@ -1,6 +1,6 @@
-# DRM AGENT Skills
+# SAKIDORI AGENT Skills
 
-[DRM AGENT](https://drm-agent.ai) の会話データを、あなたが普段使っている AI エージェント（Claude Code / Cursor / Codex / Claude Desktop）から分析・活用するための公式スキル集です。
+[SAKIDORI AGENT](https://agent.sakidori.io/ja) の会話データを、あなたが普段使っている AI エージェント（Claude Code / Cursor / Codex / Claude Desktop）から分析・活用するための公式スキル集です。
 
 セットアップが終われば、エージェントに話しかけるだけでこんなことができます。
 
@@ -35,25 +35,25 @@ ABC商事のカンペ作って            → 過去のやりとりから商談�
 
 ## 仕組み
 
-スキル = AI エージェントへの「手順書」（SKILL.md）です。エージェントは DRM AGENT の MCP サーバー経由であなたの組織の会話データにアクセスし、スキルの手順に沿って分析・配信します。
+スキル = AI エージェントへの「手順書」（SKILL.md）です。エージェントは SAKIDORI AGENT の MCP サーバー経由であなたの組織の会話データにアクセスし、スキルの手順に沿って分析・配信します。
 
 ```mermaid
 flowchart LR
     A["AI エージェント<br/>(Claude Code / Cursor / Codex)"] -- "スキル (SKILL.md)<br/>が手順を指示" --> A
-    A -- "MCP<br/>(API キー認証)" --> B["DRM AGENT<br/>会話データ"]
+    A -- "MCP<br/>(API キー認証)" --> B["SAKIDORI AGENT<br/>会話データ"]
     B -- "分析結果を配信" --> C["LINE / Discord /<br/>Slack / Chatwork"]
 ```
 
 必要なものは 2 つだけです。
 
-1. **MCP 接続** — エージェントが DRM AGENT のデータを読めるようにする（API キー）
+1. **MCP 接続** — エージェントが SAKIDORI AGENT のデータを読めるようにする（API キー）
 2. **スキル** — このリポジトリからインストール
 
 ## 初期セットアップ（3ステップ）
 
-### Step 1: DRM AGENT で API キーを発行
+### Step 1: SAKIDORI AGENT で API キーを発行
 
-1. DRM AGENT 管理画面を開く
+1. SAKIDORI AGENT 管理画面を開く
 2. **設定 > MCP連携** に進む（マーケットプレイスの「MCP 連携」が有効な組織で利用できます）
 3. ウィザードで API キーを作成し、`mcp_` から始まるキーをコピーする
 
@@ -187,7 +187,7 @@ cp -R drm-agent-skills/skills/kanpe .agents/skills/
 エージェントに話しかけて確認します。
 
 ```
-DRM AGENT のチャネル一覧を見せて     ← MCP 接続の確認
+SAKIDORI AGENT のチャネル一覧を見せて     ← MCP 接続の確認
 未返信チェックして                  ← スキル発動の確認
 ```
 
@@ -226,7 +226,7 @@ Notion MCP を併せて接続すると、会話データの分析結果を Notio
 
 [`drm-agent-extension-dev`](skills/drm-agent-extension-dev/) スキルをインストールして「拡張スキルを作りたい」と話しかけると、課題定義 → データフロー設計 → SKILL.md 作成 → 動作確認までエージェントがガイドします。SKILL.md のテンプレートも同梱しています。
 
-DRM AGENT MCP で使えるツールは全11種です:
+SAKIDORI AGENT MCP で使えるツールは全11種です:
 
 - **読み取り**: `list-channels` / `get-channel` / `list-messages` / `get-message` / `search-messages` / `list-connect-users` / `get-connect-user`
 - **送信**: `send-line-message` / `send-discord-message` / `send-slack-message` / `send-chatwork-message`
@@ -239,7 +239,7 @@ DRM AGENT MCP で使えるツールは全11種です:
 | 「MCP ツールが見つからない」と言われる | Step 2 の接続設定を確認。Claude Code は `claude mcp list`、Cursor は Settings > MCP の接続状態を確認 |
 | 401 / 認証エラー | API キーの値・有効期限を管理画面の **設定 > MCP連携** で確認。`Bearer ` の後にキーが正しく入っているか確認 |
 | ツールはあるのに実行を拒否される | API キーのスコープ不足の可能性。送信系を使うなら送信ツールを含むスコープでキーを再発行 |
-| `allowed-tools` の警告が出る | SKILL.md の `allowed-tools` は Claude Code 専用で、ツール名は MCP の接続名に依存します（`claude mcp add drm-agent` なら `mcp__drm-agent__*`）。接続名が違う場合は書き換えるか行ごと削除してください（他クライアントでは無視されます） |
+| `allowed-tools` の警告が出る | SKILL.md の `allowed-tools` は Claude Code 専用で、ツール名は MCP の接続名に依存します（`claude mcp add drm-agent` なら `mcp__drm-agent__*`、claude.ai で「SAKIDORI AGENT」と登録したなら `mcp__claude_ai_SAKIDORI_AGENT__*`。旧名「DRM AGENT」で登録した接続は `mcp__claude_ai_DRM_AGENT__*`）。接続名が違う場合は書き換えるか行ごと削除してください（他クライアントでは無視されます） |
 | データが取れない / 空になる | 対象組織に該当プラットフォームのチャネルがあるか、期間指定が正しいかを確認 |
 
 解決しない場合は [Issue](https://github.com/line-ec-lea/drm-agent-skills/issues) でお知らせください。

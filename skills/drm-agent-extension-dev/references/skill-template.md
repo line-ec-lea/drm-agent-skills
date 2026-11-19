@@ -6,7 +6,7 @@
 ---
 name: <skill-name>
 description: <何をするか1文>。「<キーワード1>」「<キーワード2>」等のキーワードで発動。
-allowed-tools: mcp__claude_ai_DRM_AGENT__list-channels mcp__claude_ai_DRM_AGENT__list-messages <実際に使うツールのみ列挙>
+allowed-tools: mcp__claude_ai_SAKIDORI_AGENT__list-channels mcp__claude_ai_DRM_AGENT__list-channels mcp__claude_ai_SAKIDORI_AGENT__list-messages mcp__claude_ai_DRM_AGENT__list-messages <実際に使うツールのみ列挙>
 ---
 
 # <ツール名（日本語）>

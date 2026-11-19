@@ -1,7 +1,7 @@
 ---
 name: unreplied
 description: 未返信メッセージを検知してLINEに通知する。「未返信」「返信漏れ」「対応漏れ」等のキーワードで発動。
-allowed-tools: mcp__claude_ai_DRM_AGENT__list-channels mcp__claude_ai_DRM_AGENT__list-messages mcp__claude_ai_DRM_AGENT__search-messages mcp__claude_ai_DRM_AGENT__get-channel mcp__claude_ai_DRM_AGENT__list-connect-users mcp__claude_ai_DRM_AGENT__send-line-message
+allowed-tools: mcp__claude_ai_SAKIDORI_AGENT__list-channels mcp__claude_ai_DRM_AGENT__list-channels mcp__claude_ai_SAKIDORI_AGENT__list-messages mcp__claude_ai_DRM_AGENT__list-messages mcp__claude_ai_SAKIDORI_AGENT__search-messages mcp__claude_ai_DRM_AGENT__search-messages mcp__claude_ai_SAKIDORI_AGENT__get-channel mcp__claude_ai_DRM_AGENT__get-channel mcp__claude_ai_SAKIDORI_AGENT__list-connect-users mcp__claude_ai_DRM_AGENT__list-connect-users mcp__claude_ai_SAKIDORI_AGENT__send-line-message mcp__claude_ai_DRM_AGENT__send-line-message
 ---
 
 # 未返信アラート

@@ -1,11 +1,11 @@
 ---
 name: drm-agent-extension-dev
-description: DRM AGENT MCP を使った拡張ツール（digest / kanpe / unreplied / meeting-summary のような MCP 連携スキル）を新規開発・改修するための開発ガイド。「拡張ツール」「拡張スキル」「MCP活用事例を作る」「新しいスキルを作る」等のキーワードで発動。
+description: SAKIDORI AGENT MCP を使った拡張ツール（digest / kanpe / unreplied / meeting-summary のような MCP 連携スキル）を新規開発・改修するための開発ガイド。「拡張ツール」「拡張スキル」「MCP活用事例を作る」「新しいスキルを作る」等のキーワードで発動。
 ---
 
-# DRM AGENT 拡張ツール開発ガイド
+# SAKIDORI AGENT 拡張ツール開発ガイド
 
-DRM AGENT MCP（全11ツール）を組み合わせ、事業課題を解決する拡張ツール＝スキルを開発するためのメタスキル。成果物は SKILL.md 形式のスキルとして作成し、Claude Code / Codex / Cursor の 3 クライアントすべてから使えるようにする。
+SAKIDORI AGENT MCP（全11ツール）を組み合わせ、事業課題を解決する拡張ツール＝スキルを開発するためのメタスキル。成果物は SKILL.md 形式のスキルとして作成し、Claude Code / Codex / Cursor の 3 クライアントすべてから使えるようにする。
 
 ## スキルの配置ルール（Claude Code / Codex / Cursor 対応）
 
@@ -29,12 +29,12 @@ ln -s ../../.agents/skills/<name> .claude/skills/<name>
 
 - frontmatter の `name` / `description` は全クライアント共通の必須フィールド。**`name` はフォルダ名と一致させる**（Cursor 要件。小文字・数字・ハイフンのみ）
 - `allowed-tools` は Claude Code 専用フィールド（他クライアントでは無視される）。書いて問題ないが、依存はしない
-- MCP ツール名のプレフィックス（`mcp__claude_ai_DRM_AGENT__*` 等）はクライアント・接続名依存。本文ではプレフィックスなしのツール名（`list-messages` 等）で手順を書き、`allowed-tools` のみプレフィックス付きにする
+- MCP ツール名のプレフィックス（`mcp__claude_ai_SAKIDORI_AGENT__*` 等。旧名「DRM AGENT」で接続した場合は `mcp__claude_ai_DRM_AGENT__*`）はクライアント・接続名依存。本文ではプレフィックスなしのツール名（`list-messages` 等）で手順を書き、`allowed-tools` のみプレフィックス付きにする
 - `$ARGUMENTS` は Claude Code のスラッシュコマンド構文。Codex / Cursor では発動時のユーザー発話が引数に相当するため、「引数が読み取れない場合はデフォルト動作」を必ず定義する
 
 ## 前提
 
-DRM AGENT 管理画面の **設定 > MCP連携** で API キーを発行し、利用するクライアントに MCP サーバー（`https://app.drm-agent.ai/api/mcp`、`Authorization: Bearer <key>`）を接続しておく。セットアップ詳細は https://docs.drm-agent.ai/integrations/mcp-setup を参照。
+SAKIDORI AGENT 管理画面の **設定 > MCP連携** で API キーを発行し、利用するクライアントに MCP サーバー（`https://app.drm-agent.ai/api/mcp`、`Authorization: Bearer <key>`）を接続しておく。セットアップ詳細は https://docs.drm-agent.ai/integrations/mcp-setup を参照。
 
 既存スキル `digest` / `kanpe` / `unreplied` / `meeting-summary`（本リポジトリ `skills/` 配下）が house pattern の実例。新規開発の前に最低 1 つ読むこと。
 

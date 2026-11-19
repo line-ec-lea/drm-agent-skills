@@ -6,10 +6,10 @@
 
 ### 1. MCP を 2 つ接続（Claude Code の場合）
 
-`mcp_xxx...` は DRM AGENT 管理画面（**設定 > MCP連携**）で発行したキーに置き換えてください。
+`mcp_xxx...` は SAKIDORI AGENT 管理画面（**設定 > MCP連携**）で発行したキーに置き換えてください。
 
 ```bash
-# DRM AGENT MCP
+# SAKIDORI AGENT MCP
 claude mcp add drm-agent \
   --transport http \
   --url "https://app.drm-agent.ai/api/mcp" \
@@ -74,9 +74,9 @@ npx skills add line-ec-lea/drm-agent-skills -s notion-daily-report -y
 | 変数 | 取得場所 |
 | --- | --- |
 | `ANTHROPIC_API_KEY` | [Anthropic Console](https://console.anthropic.com/)（Claude Code の従量 API キー） |
-| `DRM_AGENT_MCP_KEY` | DRM AGENT 管理画面 > 設定 > MCP連携 |
+| `DRM_AGENT_MCP_KEY` | SAKIDORI AGENT 管理画面 > 設定 > MCP連携 |
 | `NOTION_TOKEN` | [Notion インテグレーション](https://www.notion.so/my-integrations)（Internal Integration Token。対象 DB をインテグレーションに共有すること） |
-| `DISCORD_CHANNEL_ID` | DRM AGENT の `list-channels` で確認したチャネル ID（Part 1 の初回実行で SKILL.md に記録された値） |
+| `DISCORD_CHANNEL_ID` | SAKIDORI AGENT の `list-channels` で確認したチャネル ID（Part 1 の初回実行で SKILL.md に記録された値） |
 
 > 無人実行では Notion 公式 MCP（OAuth）ではなく、トークン認証の `@notionhq/notion-mcp-server` を使います（[mcp.json](mcp.json) に設定済み）。
 
@@ -125,5 +125,5 @@ crontab -e
 | --- | --- |
 | Notion のツールが見つからない | Part 1-1 の notion 接続と Login を確認。無人実行では `NOTION_TOKEN` の設定と、対象 DB がインテグレーションに共有されているかを確認 |
 | Notion DB に書き込めない | インテグレーションの権限（Insert/Update content）と DB 共有を確認 |
-| Discord に届かない | `DISCORD_CHANNEL_ID` が DRM AGENT に連携済みのチャネルか確認（`list-channels` で一覧表示） |
+| Discord に届かない | `DISCORD_CHANNEL_ID` が SAKIDORI AGENT に連携済みのチャネルか確認（`list-channels` で一覧表示） |
 | 二重に投稿される | スキルは日付 upsert で冪等化済み。cron と GitHub Actions の併用など多重スケジュールになっていないか確認 |

@@ -1,7 +1,7 @@
 ---
 name: notion-daily-report
-description: 昨日の会話から成果報告している人を抽出し、Notionデータベースに蓄積してDiscordに通知する。「成果報告レポート」「成果まとめ」「デイリーレポート」等のキーワードで発動。DRM AGENT MCPに加えてNotion MCPの接続が必要。
-allowed-tools: mcp__claude_ai_DRM_AGENT__list-channels mcp__claude_ai_DRM_AGENT__list-messages mcp__claude_ai_DRM_AGENT__get-channel mcp__claude_ai_DRM_AGENT__send-discord-message
+description: 昨日の会話から成果報告している人を抽出し、Notionデータベースに蓄積してDiscordに通知する。「成果報告レポート」「成果まとめ」「デイリーレポート」等のキーワードで発動。SAKIDORI AGENT MCPに加えてNotion MCPの接続が必要。
+allowed-tools: mcp__claude_ai_SAKIDORI_AGENT__list-channels mcp__claude_ai_DRM_AGENT__list-channels mcp__claude_ai_SAKIDORI_AGENT__list-messages mcp__claude_ai_DRM_AGENT__list-messages mcp__claude_ai_SAKIDORI_AGENT__get-channel mcp__claude_ai_DRM_AGENT__get-channel mcp__claude_ai_SAKIDORI_AGENT__send-discord-message mcp__claude_ai_DRM_AGENT__send-discord-message
 ---
 
 # 成果報告デイリーレポート（Notion 蓄積 + Discord 通知）

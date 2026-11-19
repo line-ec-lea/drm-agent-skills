@@ -1,6 +1,6 @@
 # Notion MCP / Notion AI 連携ユースケース集（図解）
 
-DRM AGENT MCP と [Notion 公式 MCP](https://developers.notion.com/docs/mcp) を同じ AI エージェントに接続すると、**会話データの分析結果を Notion に構造化して蓄積する**ワークフローが組めます。LINE への単発配信と違い、Notion に貯めることで後から検索・集計・Notion AI での活用が可能になります。
+SAKIDORI AGENT MCP と [Notion 公式 MCP](https://developers.notion.com/docs/mcp) を同じ AI エージェントに接続すると、**会話データの分析結果を Notion に構造化して蓄積する**ワークフローが組めます。LINE への単発配信と違い、Notion に貯めることで後から検索・集計・Notion AI での活用が可能になります。
 
 各ユースケースを「**解決したい課題 → 解決フロー → 解決プロンプト**」のセットで図解します。プロンプトはそのままコピペで使えます。
 
@@ -10,7 +10,7 @@ DRM AGENT MCP と [Notion 公式 MCP](https://developers.notion.com/docs/mcp) �
 - [4. FAQ・ナレッジベースの自動構築](#4-faqナレッジベースの自動構築)
 - [5. Notion AI との組み合わせ](#5-notion-ai-との組み合わせ蓄積後の活用)
 
-**前提**: DRM AGENT MCP と Notion MCP を接続済みであること（[README](../README.md) / [クイックスタート](notion-daily-report/) 参照）。
+**前提**: SAKIDORI AGENT MCP と Notion MCP を接続済みであること（[README](../README.md) / [クイックスタート](notion-daily-report/) 参照）。
 
 ---
 
@@ -28,7 +28,7 @@ DRM AGENT MCP と [Notion 公式 MCP](https://developers.notion.com/docs/mcp) �
 
 ```mermaid
 flowchart LR
-    subgraph src["🗂 DRM AGENT（昨日の会話）"]
+    subgraph src["🗂 SAKIDORI AGENT（昨日の会話）"]
         A1["LINE"]
         A2["Discord"]
         A3["Slack / Chatwork"]
@@ -79,7 +79,7 @@ Notion に upsert し、Discord チャネル ID <チャネルID> に通知まで
 ```mermaid
 flowchart LR
     U["🙋 あなた<br/>『商談まとめてNotionに』"] --> B["🤖 AI エージェント<br/>meeting-summary スキル + Notion MCP"]
-    B -- "list-messages" --> D["🗂 DRM AGENT<br/>対象チャネルの会話"]
+    B -- "list-messages" --> D["🗂 SAKIDORI AGENT<br/>対象チャネルの会話"]
     D --> B
     B --> E["📝 サマリー生成<br/>決定事項 / 未解決 /<br/>ネクストアクション / 温度感"]
     E --> F["📄 Notion 商談DB<br/>企業名・日付でページ作成"]
@@ -116,7 +116,7 @@ Notionの「商談議事録」データベースに追加して。既に同じ�
 
 ```mermaid
 flowchart LR
-    subgraph src["🗂 DRM AGENT"]
+    subgraph src["🗂 SAKIDORI AGENT"]
         A1["顧客Aチャネル"]
         A2["顧客Bチャネル"]
         A3["顧客Cチャネル"]
@@ -143,7 +143,7 @@ ABC商事チャネルの全会話履歴を分析して、Notionの「顧客カ�
 運用（差分更新）:
 
 ```
-「顧客カルテ」データベースの全ページについて、前回更新日以降の会話をDRM AGENTから
+「顧客カルテ」データベースの全ページについて、前回更新日以降の会話をSAKIDORI AGENTから
 取得してカルテを更新して。変化があった顧客だけ、何が変わったかを箇条書きで報告して
 ```
 
@@ -161,7 +161,7 @@ ABC商事チャネルの全会話履歴を分析して、Notionの「顧客カ�
 
 ```mermaid
 flowchart LR
-    A["🗂 DRM AGENT<br/>全チャネルの会話"] -- "search-messages<br/>list-messages" --> B["🤖 AI エージェント<br/>(月次実行)"]
+    A["🗂 SAKIDORI AGENT<br/>全チャネルの会話"] -- "search-messages<br/>list-messages" --> B["🤖 AI エージェント<br/>(月次実行)"]
     B --> C["🔍 質問と回答ペアを抽出<br/>頻出トピックごとに分類"]
     C --> D["📄 Notion FAQ DB<br/>既存FAQと照合<br/>新規追加 / 統合"]
     D -. "実際に効いた回答が<br/>ナレッジとして育つ" .-> E["👥 対応品質の均一化<br/>新人オンボーディング"]
@@ -187,11 +187,11 @@ flowchart LR
 
 ### 解決フロー
 
-役割分担: **DRM AGENT MCP = 会話データを Notion に構造化して流し込む役**、**Notion AI = 蓄積後の横断検索・要約・Q&A 役**。
+役割分担: **SAKIDORI AGENT MCP = 会話データを Notion に構造化して流し込む役**、**Notion AI = 蓄積後の横断検索・要約・Q&A 役**。
 
 ```mermaid
 flowchart LR
-    A["🗂 DRM AGENT<br/>会話データ"] -- "ユースケース1〜4のスキルが<br/>毎日/毎週 構造化して蓄積" --> B["📄 Notion<br/>成果報告DB / 商談DB /<br/>カルテDB / FAQ DB"]
+    A["🗂 SAKIDORI AGENT<br/>会話データ"] -- "ユースケース1〜4のスキルが<br/>毎日/毎週 構造化して蓄積" --> B["📄 Notion<br/>成果報告DB / 商談DB /<br/>カルテDB / FAQ DB"]
     B --> C["✨ Notion AI"]
     C --> D1["『今月もっとも成果を<br/>出したメンバーは？』"]
     C --> D2["『◯◯という課題を抱えた<br/>顧客の一覧を出して』"]

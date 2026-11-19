@@ -44,7 +44,7 @@ Cursor 自体は定期実行を持たないため、実体は cursor-agent CLI�
 3. **期間の決定性** — 「昨日」= JST の前日 00:00〜24:00 のように、実行時刻に依存しない期間定義にする
 4. **失敗時の通知** — 取得 0 件と実行失敗を区別する。失敗した場合も Discord 等へエラー通知を送る（沈黙させない）
 5. **出力の縮退** — 件数が想定超過した場合の上限と縮退動作（上位 N 件＋残数報告）を決めておく
-6. **シークレット** — DRM AGENT API キー・Notion トークン等は `.mcp.json`（gitignore 対象）/ launchd 環境変数 / GitHub Secrets に置く。SKILL.md・ワークフロー YAML に直書きしない
+6. **シークレット** — SAKIDORI AGENT API キー・Notion トークン等は `.mcp.json`（gitignore 対象）/ launchd 環境変数 / GitHub Secrets に置く。SKILL.md・ワークフロー YAML に直書きしない
 
 ## Notion 連携の冪等パターン
 

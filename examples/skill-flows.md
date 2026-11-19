@@ -22,7 +22,7 @@
 ```mermaid
 flowchart LR
     U["🙋 あなた<br/>『ABC商事のカンペ作って』"] --> B["🤖 AI エージェント<br/>kanpe スキル"]
-    B -- "search-messages<br/>list-messages" --> D["🗂 DRM AGENT<br/>ABC商事との全やりとり"]
+    B -- "search-messages<br/>list-messages" --> D["🗂 SAKIDORI AGENT<br/>ABC商事との全やりとり"]
     D --> B
     B --> E["📝 カンペ生成<br/>オープニング / 確認事項 /<br/>ゴール / 想定Q&A / クロージング"]
     E -- "内容と送信先を確認" --> U
@@ -58,7 +58,7 @@ ABC商事のカンペを作って、営業チームの佐藤さんのLINEに送�
 ```mermaid
 flowchart LR
     U["🙋 あなた<br/>『ABC商事の商談サマリー出して』"] --> B["🤖 AI エージェント<br/>meeting-summary スキル"]
-    B -- "list-messages<br/>(直近7日 or 指定期間)" --> D["🗂 DRM AGENT<br/>対象チャネルの会話"]
+    B -- "list-messages<br/>(直近7日 or 指定期間)" --> D["🗂 SAKIDORI AGENT<br/>対象チャネルの会話"]
     D --> B
     B --> E["📝 サマリー生成<br/>決定事項 / 未解決事項 /<br/>ネクストアクション / 温度感"]
     E -- "内容と送信先を確認" --> U
@@ -90,7 +90,7 @@ ABC商事の直近1週間の商談サマリー出して
 ```mermaid
 flowchart LR
     U["🙋 あなた<br/>『未返信チェックして』"] --> B["🤖 AI エージェント<br/>unreplied スキル"]
-    B -- "list-channels<br/>list-messages (直近3日)" --> D["🗂 DRM AGENT<br/>全チャネルの会話"]
+    B -- "list-channels<br/>list-messages (直近3日)" --> D["🗂 SAKIDORI AGENT<br/>全チャネルの会話"]
     D --> B
     B --> E["🔍 未返信判定<br/>① 質問に未回答<br/>② 会話の途絶 24h+<br/>③ 依頼に未対応"]
     E --> F["📋 緊急度つきリスト<br/>高/中/低 + 推奨返信文案"]
@@ -127,7 +127,7 @@ ABC商事チャネルの返信漏れを1週間分チェックして
 ```mermaid
 flowchart LR
     U["🙋 あなた<br/>『今週のダイジェストまとめて』"] --> B["🤖 AI エージェント<br/>digest スキル"]
-    B -- "list-channels<br/>list-messages (24h / 7日)" --> D["🗂 DRM AGENT<br/>全チャネル横断"]
+    B -- "list-channels<br/>list-messages (24h / 7日)" --> D["🗂 SAKIDORI AGENT<br/>全チャネル横断"]
     D --> B
     B --> E["📊 ダイジェスト生成<br/>全体サマリー / チャネル別<br/>ハイライト / 要対応 / トレンド"]
     E -- "内容と送信先を確認" --> U

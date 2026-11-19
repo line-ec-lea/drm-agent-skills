@@ -1,7 +1,7 @@
 ---
 name: kanpe
 description: 企業名を指定して過去のやりとりから商談前カンペ（準備ガイド）を生成し、LINEに配信する。「カンペ」「商談準備」等のキーワードで発動。
-allowed-tools: mcp__claude_ai_DRM_AGENT__list-channels mcp__claude_ai_DRM_AGENT__list-messages mcp__claude_ai_DRM_AGENT__search-messages mcp__claude_ai_DRM_AGENT__get-channel mcp__claude_ai_DRM_AGENT__list-connect-users mcp__claude_ai_DRM_AGENT__send-line-message
+allowed-tools: mcp__claude_ai_SAKIDORI_AGENT__list-channels mcp__claude_ai_DRM_AGENT__list-channels mcp__claude_ai_SAKIDORI_AGENT__list-messages mcp__claude_ai_DRM_AGENT__list-messages mcp__claude_ai_SAKIDORI_AGENT__search-messages mcp__claude_ai_DRM_AGENT__search-messages mcp__claude_ai_SAKIDORI_AGENT__get-channel mcp__claude_ai_DRM_AGENT__get-channel mcp__claude_ai_SAKIDORI_AGENT__list-connect-users mcp__claude_ai_DRM_AGENT__list-connect-users mcp__claude_ai_SAKIDORI_AGENT__send-line-message mcp__claude_ai_DRM_AGENT__send-line-message
 ---
 
 # 商談前カンペ生成
